@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class EnemyColision : MonoBehaviour
+public class EnemyColisionBlue : MonoBehaviour
 {
     [Header("Player References")]
     public Rigidbody2D body;
@@ -19,6 +19,7 @@ public class EnemyColision : MonoBehaviour
 
 
     static System.Random rand = new System.Random(System.DateTime.Now.Millisecond);
+    bool rotated = false;
     AudioSource audioPlayer;
 
     private void Start()
@@ -26,11 +27,28 @@ public class EnemyColision : MonoBehaviour
         body = this.gameObject.GetComponent<Rigidbody2D>();
         audioPlayer = GetComponent<AudioSource>();
         audioPlayer.clip = (AudioClip)Resources.Load("Damage Sounds/" + rand.Next(1, 23) + ". Damage Grunt (Male)");
+        StartCoroutine(ChangeAngle());
     }
 
     void FixedUpdate()
     {
         ApplyMovement(body, player1Weight);
+    }
+
+    IEnumerator ChangeAngle()
+    {
+        yield return new WaitForSeconds(2);
+        if (rotated)
+        {
+            rotated = false;
+            angle -= 40;
+        }
+        else
+        {
+            rotated = true;
+            angle += 40;
+        }
+        StartCoroutine(ChangeAngle());
     }
 
     void ApplyMovement(Rigidbody2D rb, float weight)
