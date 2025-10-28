@@ -940,6 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   redEnemyPrefab: {fileID: 8581634364915584947, guid: 5e077a4ae73ecb947ad58c330f7ae1c6, type: 3}
+  blueEnemyPrefab: {fileID: 8581634364915584947, guid: c42515fa326889346badc375ef5d3908, type: 3}
 --- !u!114 &1057288163
 MonoBehaviour:
   m_ObjectHideFlags: 0
