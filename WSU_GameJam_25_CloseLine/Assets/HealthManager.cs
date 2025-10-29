@@ -7,7 +7,9 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int startHealth = 100; 
-    [SerializeField] private Image healthFill;          
+    [SerializeField] private Image healthFill;
+
+    public Canvas ui;
 
     private int currentHealth;
 
@@ -71,6 +73,8 @@ public class HealthManager : MonoBehaviour
          Camera camera = Camera.main;
             if (camera != null)
             {
+                camera.backgroundColor = Color.black;
+                ui.gameObject.SetActive(true);
                 AudioSource sfxplayer = camera.GetComponent<AudioSource>();
                 sfxplayer.clip = (AudioClip)Resources.Load("Loss");
                 sfxplayer.Play();

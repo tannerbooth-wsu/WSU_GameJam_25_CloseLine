@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
 
     private float redWaitTime = 4f;
     private float blueWaitTime = 10f;
-    private float yellowWaitTime = 10f;
+    private float yellowWaitTime = 16f;
 
     public Canvas ui;
     public TextMeshProUGUI Scoreui;
@@ -33,16 +33,34 @@ public class EnemyMovement : MonoBehaviour
         {
             redWaitTime -= 1;
             blueWaitTime -= 2;
+            yellowWaitTime -= 2;
         }
-        else if (score == 16)
+        else if (score == 17)
         {
             redWaitTime -= 1;
             blueWaitTime -= 2;
+            yellowWaitTime -= 2;
         }
-        else if (score == 24)
+        else if (score == 27)
+        {
+            blueWaitTime -= 2;
+            yellowWaitTime -= 2;
+        }
+        else if (score == 38)
         {
             redWaitTime -= 1;
-            blueWaitTime -= 2;
+            blueWaitTime -= 1;
+            yellowWaitTime -= 2;
+        }
+        else if (score == 50)
+        {
+            blueWaitTime -= 1;
+            yellowWaitTime -= 1;
+        }
+        else if (score == 100)
+        {
+            blueWaitTime -= 1;
+            yellowWaitTime -= 1;
         }
     }
 
