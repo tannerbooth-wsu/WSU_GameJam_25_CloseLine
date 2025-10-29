@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class EnemyColision : MonoBehaviour
+public class EnemyColisionYellow : MonoBehaviour
 {
     [Header("Player References")]
     public Rigidbody2D body;
@@ -28,6 +28,7 @@ public class EnemyColision : MonoBehaviour
         body = this.gameObject.GetComponent<Rigidbody2D>();
         audioPlayer = GetComponent<AudioSource>();
         audioPlayer.clip = (AudioClip)Resources.Load("Damage Sounds/" + rand.Next(1, 23) + ". Damage Grunt (Male)");
+        StartCoroutine(ChangeAngle());
         gameFuncs = GameObject.Find("EnemyMovement").GetComponent<EnemyMovement>();
         StartCoroutine(GarbageCollect());
     }
@@ -41,6 +42,14 @@ public class EnemyColision : MonoBehaviour
     {
         yield return new WaitForSeconds(50);
         Object.Destroy(this.gameObject);
+    }
+
+
+    IEnumerator ChangeAngle()
+    {
+        yield return new WaitForSeconds(1);
+        angle += 15;
+        StartCoroutine(ChangeAngle());
     }
 
     void ApplyMovement(Rigidbody2D rb, float weight)
@@ -94,7 +103,7 @@ public class EnemyColision : MonoBehaviour
 
             //this line of code currently ends the game when a player gets hit by an enemy
             gameFuncs.EndGame();
-            
+
         }
     }
 }

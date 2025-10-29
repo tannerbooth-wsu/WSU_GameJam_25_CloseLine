@@ -21,6 +21,8 @@ public class EnemyColisionBlue : MonoBehaviour
     static System.Random rand = new System.Random(System.DateTime.Now.Millisecond);
     bool rotated = false;
     AudioSource audioPlayer;
+    private EnemyMovement gameFuncs;
+    private bool gaveScoreOut = false;
 
     private void Start()
     {
@@ -28,12 +30,21 @@ public class EnemyColisionBlue : MonoBehaviour
         audioPlayer = GetComponent<AudioSource>();
         audioPlayer.clip = (AudioClip)Resources.Load("Damage Sounds/" + rand.Next(1, 23) + ". Damage Grunt (Male)");
         StartCoroutine(ChangeAngle());
+        gameFuncs = GameObject.Find("EnemyMovement").GetComponent<EnemyMovement>();
+        StartCoroutine(GarbageCollect());
     }
 
     void FixedUpdate()
     {
         ApplyMovement(body, player1Weight);
     }
+
+    IEnumerator GarbageCollect()
+    {
+        yield return new WaitForSeconds(50);
+        Object.Destroy(this.gameObject);
+    }
+
 
     IEnumerator ChangeAngle()
     {
@@ -79,7 +90,11 @@ public class EnemyColisionBlue : MonoBehaviour
             }
 
             //increment the score here
-            ScoreManager.Instance.AddScore(1);
+            if (!gaveScoreOut)
+            {
+                gaveScoreOut = true;
+                gameFuncs.IncrementScore();
+            }
 
             Object.Destroy(this.gameObject);
         }
@@ -97,7 +112,8 @@ public class EnemyColisionBlue : MonoBehaviour
             //damage the player.
 
             //this line of code currently ends the game when a player gets hit by an enemy
-            Time.timeScale = 0;
+            gameFuncs.EndGame();
+
         }
     }
 }

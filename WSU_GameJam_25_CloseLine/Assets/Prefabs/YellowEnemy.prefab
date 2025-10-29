@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5492625043147542211}
   - component: {fileID: 2244156720856973}
   - component: {fileID: 8456065551372516847}
-  - component: {fileID: -6642675818535524882}
   - component: {fileID: -8179968064548588208}
+  - component: {fileID: -8594842730153939170}
   m_Layer: 0
-  m_Name: BlueEnemy
+  m_Name: YellowEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.1176471, g: 0.5647059, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8431373, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,24 +157,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &-6642675818535524882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8581634364915584947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc72933df7b51347bdb06e03a977bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyColisionBlue
-  body: {fileID: 0}
-  moveForce: 15
-  maxSpeed: 7.5
-  angle: 0
-  player1Weight: 1
-  player2Weight: 1
 --- !u!82 &-8179968064548588208
 AudioSource:
   m_ObjectHideFlags: 0
@@ -272,3 +254,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8594842730153939170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581634364915584947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562b09346d5e1d34ea1ec17604c6c987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyColisionYellow
+  body: {fileID: 0}
+  moveForce: 15
+  maxSpeed: 7.5
+  angle: 0
+  player1Weight: 1
+  player2Weight: 1
