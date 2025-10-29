@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using TMPro;
-using UnityEditor.Build.Reporting;
+//using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SocialPlatforms.Impl;
