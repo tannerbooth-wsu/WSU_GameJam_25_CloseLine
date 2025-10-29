@@ -91,9 +91,11 @@ public class EnemyColision : MonoBehaviour
             }
 
             //damage the player.
+            HealthManager.Instance.TakeDamage(10);
+
 
             //this line of code currently ends the game when a player gets hit by an enemy
-            gameFuncs.EndGame();
+            //gameFuncs.EndGame();
             
         }
     }
