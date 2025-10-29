@@ -61,6 +61,7 @@ public class EnemyColision : MonoBehaviour
             }
 
             //increment the score here
+            ScoreManager.Instance.AddScore(1);
 
             Object.Destroy(this.gameObject);
         }
