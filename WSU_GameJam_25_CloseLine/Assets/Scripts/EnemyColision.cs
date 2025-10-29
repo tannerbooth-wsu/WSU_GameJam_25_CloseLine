@@ -20,17 +20,27 @@ public class EnemyColision : MonoBehaviour
 
     static System.Random rand = new System.Random(System.DateTime.Now.Millisecond);
     AudioSource audioPlayer;
+    private EnemyMovement gameFuncs;
+    private bool gaveScoreOut = false;
 
     private void Start()
     {
         body = this.gameObject.GetComponent<Rigidbody2D>();
         audioPlayer = GetComponent<AudioSource>();
         audioPlayer.clip = (AudioClip)Resources.Load("Damage Sounds/" + rand.Next(1, 23) + ". Damage Grunt (Male)");
+        gameFuncs = GameObject.Find("EnemyMovement").GetComponent<EnemyMovement>();
+        StartCoroutine(GarbageCollect());
     }
 
     void FixedUpdate()
     {
         ApplyMovement(body, player1Weight);
+    }
+
+    IEnumerator GarbageCollect()
+    {
+        yield return new WaitForSeconds(50);
+        Object.Destroy(this.gameObject);
     }
 
     void ApplyMovement(Rigidbody2D rb, float weight)
@@ -61,24 +71,31 @@ public class EnemyColision : MonoBehaviour
             }
 
             //increment the score here
+            if (!gaveScoreOut)
+            {
+                gaveScoreOut = true;
+                gameFuncs.IncrementScore();
+            }
 
             Object.Destroy(this.gameObject);
         }
         else if (collision.rigidbody.ToString().Substring(0, 4) == "Play")
         {
-            UnityEngine.Debug.Log("Players got touched by NPC. Game should end now.");
             Camera camera = Camera.main;
             if (camera != null)
             {
                 AudioSource sfxplayer = camera.GetComponent<AudioSource>();
-                sfxplayer.clip = (AudioClip)Resources.Load("Loss");
+                sfxplayer.clip = (AudioClip)Resources.Load("Damage");
                 sfxplayer.Play();
             }
 
             //damage the player.
+            HealthManager.Instance.TakeDamage(10);
+            UnityEngine.Object.Destroy(this.gameObject);
 
             //this line of code currently ends the game when a player gets hit by an enemy
-            Time.timeScale = 0;
+            //gameFuncs.EndGame();
+
         }
     }
 }

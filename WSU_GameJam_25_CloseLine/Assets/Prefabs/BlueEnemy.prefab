@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyColisionBlue
   body: {fileID: 0}
-  moveForce: 10
-  maxSpeed: 5
+  moveForce: 15
+  maxSpeed: 7.5
   angle: 0
   player1Weight: 1
   player2Weight: 1

@@ -21,6 +21,8 @@ public class EnemyColisionBlue : MonoBehaviour
     static System.Random rand = new System.Random(System.DateTime.Now.Millisecond);
     bool rotated = false;
     AudioSource audioPlayer;
+    private EnemyMovement gameFuncs;
+    private bool gaveScoreOut = false;
 
     private void Start()
     {
@@ -28,6 +30,8 @@ public class EnemyColisionBlue : MonoBehaviour
         audioPlayer = GetComponent<AudioSource>();
         audioPlayer.clip = (AudioClip)Resources.Load("Damage Sounds/" + rand.Next(1, 23) + ". Damage Grunt (Male)");
         StartCoroutine(ChangeAngle());
+        gameFuncs = GameObject.Find("EnemyMovement").GetComponent<EnemyMovement>();
+        StartCoroutine(GarbageCollect());
     }
 
     void FixedUpdate()
@@ -35,18 +39,25 @@ public class EnemyColisionBlue : MonoBehaviour
         ApplyMovement(body, player1Weight);
     }
 
+    IEnumerator GarbageCollect()
+    {
+        yield return new WaitForSeconds(50);
+        Object.Destroy(this.gameObject);
+    }
+
+
     IEnumerator ChangeAngle()
     {
         yield return new WaitForSeconds(2);
         if (rotated)
         {
             rotated = false;
-            angle -= 40;
+            angle -= 50;
         }
         else
         {
             rotated = true;
-            angle += 40;
+            angle += 50;
         }
         StartCoroutine(ChangeAngle());
     }
@@ -79,24 +90,31 @@ public class EnemyColisionBlue : MonoBehaviour
             }
 
             //increment the score here
+            if (!gaveScoreOut)
+            {
+                gaveScoreOut = true;
+                gameFuncs.IncrementScore();
+            }
 
             Object.Destroy(this.gameObject);
         }
         else if (collision.rigidbody.ToString().Substring(0, 4) == "Play")
         {
-            UnityEngine.Debug.Log("Players got touched by NPC. Game should end now.");
             Camera camera = Camera.main;
             if (camera != null)
             {
                 AudioSource sfxplayer = camera.GetComponent<AudioSource>();
-                sfxplayer.clip = (AudioClip)Resources.Load("Loss");
+                sfxplayer.clip = (AudioClip)Resources.Load("Damage");
                 sfxplayer.Play();
             }
 
             //damage the player.
+            HealthManager.Instance.TakeDamage(10);
+            Object.Destroy(this.gameObject);
 
             //this line of code currently ends the game when a player gets hit by an enemy
-            Time.timeScale = 0;
+            //gameFuncs.EndGame();
+
         }
     }
 }
