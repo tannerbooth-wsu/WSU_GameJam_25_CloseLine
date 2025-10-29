@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7843344485598756622}
   - component: {fileID: 5492625043147542211}
   - component: {fileID: 2244156720856973}
-  - component: {fileID: 8456065551372516847}
+  - component: {fileID: 5538396931664948251}
   - component: {fileID: -6642675818535524882}
   - component: {fileID: -8179968064548588208}
+  - component: {fileID: -7671006150854422156}
   m_Layer: 0
   m_Name: BlueEnemy
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,8 +84,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.1176471, g: 0.5647059, b: 1, a: 1}
+  m_Sprite: {fileID: -7172226001116280355, guid: 8a7dc8ac0911a4440a507602e93a990b, type: 3}
+  m_Color: {r: 0.43529415, g: 0.65882355, b: 0.86274517, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,9 +121,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &8456065551372516847
-CircleCollider2D:
+  m_Constraints: 4
+--- !u!70 &5538396931664948251
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,7 +157,8 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Size: {x: 0.4, y: 0.8}
+  m_Direction: 0
 --- !u!114 &-6642675818535524882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,3 +274,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7671006150854422156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581634364915584947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe30e63e1ec34784d98edcae2c8d8574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WalkingSpriteController

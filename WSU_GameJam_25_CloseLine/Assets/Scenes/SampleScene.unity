@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 146309803}
   - component: {fileID: 146309805}
   - component: {fileID: 146309806}
+  - component: {fileID: 146309807}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -233,12 +234,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.7529413, b: 0.7960785, a: 1}
+  m_Sprite: {fileID: -7172226001116280355, guid: 8a7dc8ac0911a4440a507602e93a990b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.61, y: 1.07}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -285,9 +286,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &146309806
-CircleCollider2D:
+  m_Constraints: 4
+--- !u!70 &146309806
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -606,6 +607,7 @@ GameObject:
   - component: {fileID: 461669843}
   - component: {fileID: 461669845}
   - component: {fileID: 461669846}
+  - component: {fileID: 461669847}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -660,8 +662,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8784314, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -7172226001116280355, guid: 8a7dc8ac0911a4440a507602e93a990b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -712,9 +714,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &461669846
-CircleCollider2D:
+  m_Constraints: 4
+--- !u!70 &461669846
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -748,7 +750,20 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Size: {x: 0.4, y: 0.8}
+  m_Direction: 0
+--- !u!114 &461669847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461669842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe30e63e1ec34784d98edcae2c8d8574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WalkingSpriteController
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +777,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -984,6 +1000,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e44af9b9a284a4587736fc970e80a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraMover
+  Player1: {fileID: 146309802}
+  Player2: {fileID: 461669842}
 --- !u!1 &590063581
 GameObject:
   m_ObjectHideFlags: 0
