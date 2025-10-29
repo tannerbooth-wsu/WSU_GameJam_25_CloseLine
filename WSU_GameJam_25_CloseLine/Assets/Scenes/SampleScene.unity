@@ -1446,6 +1446,7 @@ MonoBehaviour:
   redEnemyPrefab: {fileID: 8581634364915584947, guid: 5e077a4ae73ecb947ad58c330f7ae1c6, type: 3}
   blueEnemyPrefab: {fileID: 8581634364915584947, guid: c42515fa326889346badc375ef5d3908, type: 3}
   yellowEnemyPrefab: {fileID: 8581634364915584947, guid: f1c110dd250f72e49a9414584c48ba11, type: 3}
+  pinkEnemyPrefab: {fileID: 8581634364915584947, guid: eaf9d07ad96e86d4aa9d0812ee46ac08, type: 3}
   ui: {fileID: 1517166281}
   Scoreui: {fileID: 433930833}
 --- !u!114 &1057288163

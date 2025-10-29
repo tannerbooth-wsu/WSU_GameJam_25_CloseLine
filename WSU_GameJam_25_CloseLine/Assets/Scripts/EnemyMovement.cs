@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject redEnemyPrefab;
     public GameObject blueEnemyPrefab;
     public GameObject yellowEnemyPrefab;
+    public GameObject pinkEnemyPrefab;
 
     static System.Random rand = new System.Random(System.DateTime.Now.Millisecond);
 
@@ -34,6 +35,7 @@ public class EnemyMovement : MonoBehaviour
             redWaitTime -= 1;
             blueWaitTime -= 2;
             yellowWaitTime -= 2;
+            StartCoroutine(SpawnPinkEnemy());
         }
         else if (score == 17)
         {
@@ -162,6 +164,36 @@ public class EnemyMovement : MonoBehaviour
 
         }
         StartCoroutine(SpawnYellowEnemy());
+
+    }
+
+    IEnumerator SpawnPinkEnemy()
+    {
+        yield return new WaitForSeconds(25);
+        GameObject enemy = Instantiate(pinkEnemyPrefab, transform);
+
+        float edgeSpawn = rand.Next(0, 4);
+        switch (edgeSpawn)
+        {
+            case 0:
+                enemy.transform.position = new Vector2(-10, rand.Next(-5, 5));
+                enemy.GetComponent<EnemyColisionPink>().angle = rand.Next(90 - 30, 90 + 30);
+                break;
+            case 1:
+                enemy.transform.position = new Vector2(rand.Next(-10, 10), 5);
+                enemy.GetComponent<EnemyColisionPink>().angle = rand.Next(180 - 30, 180 + 30);
+                break;
+            case 2:
+                enemy.transform.position = new Vector2(10, rand.Next(-5, 5));
+                enemy.GetComponent<EnemyColisionPink>().angle = rand.Next(270 - 30, 270 + 30);
+                break;
+            case 3:
+                enemy.transform.position = new Vector2(rand.Next(-10, 10), -5);
+                enemy.GetComponent<EnemyColisionPink>().angle = rand.Next(-30, 30);
+                break;
+
+        }
+        StartCoroutine(SpawnPinkEnemy());
 
     }
 
